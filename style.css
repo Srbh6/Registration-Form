@@ -1,0 +1,54 @@
+*{
+
+    margin: 0%;
+}
+h2{
+text-align: center;
+margin-bottom: 10%;
+margin-left: 19%;
+text-decoration: underline;
+}
+.form-fields{
+   
+   background-color: honeydew;
+   box-sizing: border-box;
+   text-align: center;
+   margin: 0px;
+    padding: 100px;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+   
+}
+.container{
+  display: flex;
+  flex-direction: row; 
+}
+.container input{
+    margin: 3%;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 10px;
+}
+.row label{
+    width: 30%;
+}
+.row input{
+    width: 70%;
+}
+.form-button{
+   display: flex;
+   flex-direction: row;
+   margin-left: 30%;
+   margin-top: 3%;
+}
+#reset{
+margin-left: 15%;
+}
+#add-box{
+    height: 20px;
+}

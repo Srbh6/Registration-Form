@@ -18,7 +18,7 @@
         <h2>Registration form</h2>
         <div class="row" id="name">
           <label for="First Name">First Name </label>
-          <input type="text" name="fname" required />
+          <input type="text" name="fname" />
           <span class="formerror"> </span>
         </div>
         <div class="row" id="lname">
@@ -87,22 +87,33 @@
       var name = document.forms["myForm"]["fname"].value;
       if (name.length < 5) {
         seterror("name", "length is too short");
+        returnval = false;}
+
+        var lname = document.forms["myForm"]["flname"].value;
+      if (lname.length < 5){
+      seterror("fname", "length is too short") 
+       returnval = false;
+       
+    
+      }
+      var nname = document.forms["myForm"]["fnname"].value;
+      if (nname.length < 5) {
+        seterror("nname", "length is too short");
         returnval = false;
-      if (name.length < 5)    seterror("name", "length is too short") var name = document.forms["myForm"]["flname"].value  returnval = fals var name = document.forms["myForm"]["fnname"].valu if (name.length < 5)   seterror("name", "length is too short") var name = document.forms["myForm"]["femail"].valu if (name.length < 5)   seterror("name", "length is too short"   returnval = fals var name = document.forms["myForm"]["fpass"].valu if (name.length < 5)   seterror("name", "length is too short"   returnval = fals var name = document.forms["myForm"]["fgender"].valu if (name.length < 5)   seterror("name", "length is too short"   returnval = false;
-       }
-     var name = document.forms["myForm"]["fdob"].value;
-       if (name.length < 5) {
-         seterror("name", "length is too short");
+      }
+     var dob = document.forms["myForm"]["fdob"].value;
+       if (dob.length < 5) {
+         seterror("dob", "DoB should be number Only");
          returnval = false;
        }
       var mobile = document.forms["myForm"]["fmobile"].value;
-      if (mobile.length < 10) {
-        seterror("name", "length is too short");
+      if (mobile.length>= 10) {
+        seterror("mobile", "Mobile number Should be 10 Digit ");
         returnval = false;
       }
-      var name = document.forms["myForm"]["fname"].value;
-      if (name.length < 5) {
-        seterror("name", "length is too short");
+      var password= document.forms["myForm"]["fpass"].value;
+      if (password.length < 5) {
+        seterror("password", " It is a combination of Uppercase & Lowercase Letters and numbers and some special characters and not more then 10 characters, ");
         returnval = false;
       }
 

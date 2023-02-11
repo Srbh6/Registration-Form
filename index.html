@@ -6,38 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registration Form</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="javascript" href="index.js" />
   </head>
   <body>
     <form
-      action="#"
+      action="/myaction.php"
       name="myForm"
-      onsubmit="return validationForm()"
+      onsubmit="return validateForm()"
       method="post"
     >
       <div class="form-fields">
         <h2>Registration form</h2>
-        <div class="row">
+        <div class="row" id="name">
           <label for="First Name">First Name </label>
-          <input type="text" name="fName"/>
+          <input type="text" name="fname" required />
+          <span class="formerror"> </span>
         </div>
-        <div class="row">
+        <div class="row" id="lname">
           <label for="Last Name">Last Name </label>
-          <input type="text" name="lname" />
+          <input type="text" name="flname" />
+          <span class="formerror"> </span>
         </div>
-        <div class="row">
+        <div class="row" id="nname">
           <label for="Nick Name">Nick Name </label>
-          <input type="text" name="nname"/>
+          <input type="text" name="fnname" />
+          <span class="formerror"> </span>
         </div>
-        <div class="row">
+        <div class="row" id="email">
           <label for="e-mail">e-mail </label>
-          <input type="email" name="email"/>
+          <input type="email" name="femail" />
+          <span class="formerror"> </span>
         </div>
-        <div class="row">
+        <div class="row" id="password">
           <label for="password"> Password </label>
-          <input type="text" name="pass"/>
+          <input type="text" name="fpass" />
+          <span class="formerror"> </span>
         </div>
-        <div class="row">
+        <div class="row" id="gender">
           <label for="gender">Gender</label>
           <div class="container">
             <input type="radio" name="gender" value="Male" />
@@ -46,20 +50,24 @@
             <label for="Female">Female</label>
             <input type="radio" name="gender" value="Other" />
             <label for="Other">Other</label>
+            <span class="formerror"> </span>
           </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="dob">
           <label for="Date of Birth">Date of Birth</label>
-          <input type="text" />
+          <input type="text" id="fdob" />
+          <span class="formerror"> </span>
         </div>
-        <div class="row">
+        <div class="row" id="mobile">
           <label for="Mobile">Mobile </label>
-          <input type="text"  />
+          <input type="text" id="fmobile" />
+          <span class="formerror"> </span>
         </div>
-        <div class="row">
+        <div class="row" id="add">
           <label for="Address">Address </label>
-          <input id="add-box" type="text" />
+          <input id="add-box" id="fadd" type="text" />
+          <span class="formerror"> </span>
         </div>
 
         <div class="form-button">
@@ -69,4 +77,36 @@
       </div>
     </form>
   </body>
+  <script>
+    function seterror(id, error) {
+      element = document.getElementById(id);
+      element.getElementsByClassName("formerror")[0].innerHTML = error;
+    }
+    function validateForm() {
+      var returnval = true;
+      var name = document.forms["myForm"]["fname"].value;
+      if (name.length < 5) {
+        seterror("name", "length is too short");
+        returnval = false;
+      if (name.length < 5)    seterror("name", "length is too short") var name = document.forms["myForm"]["flname"].value  returnval = fals var name = document.forms["myForm"]["fnname"].valu if (name.length < 5)   seterror("name", "length is too short") var name = document.forms["myForm"]["femail"].valu if (name.length < 5)   seterror("name", "length is too short"   returnval = fals var name = document.forms["myForm"]["fpass"].valu if (name.length < 5)   seterror("name", "length is too short"   returnval = fals var name = document.forms["myForm"]["fgender"].valu if (name.length < 5)   seterror("name", "length is too short"   returnval = false;
+       }
+     var name = document.forms["myForm"]["fdob"].value;
+       if (name.length < 5) {
+         seterror("name", "length is too short");
+         returnval = false;
+       }
+      var mobile = document.forms["myForm"]["fmobile"].value;
+      if (mobile.length < 10) {
+        seterror("name", "length is too short");
+        returnval = false;
+      }
+      var name = document.forms["myForm"]["fname"].value;
+      if (name.length < 5) {
+        seterror("name", "length is too short");
+        returnval = false;
+      }
+
+      return returnval;
+    }
+  </script>
 </html>

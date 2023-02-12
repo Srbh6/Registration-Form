@@ -9,7 +9,7 @@
   </head>
   <body>
     <form
-      action="action.php"
+      action=""
       name="myForm" id="myForm"
       method="post"
     >
@@ -80,11 +80,11 @@
     const form = document.getElementById("myForm");
     form.addEventListener("submit",validateForm);
     const reset = document.getElementById("reset");
-    form.addEventListener("click",resetform);
+    form.addEventListener("click",resetForm);
     function seterror(id,error) {
       element = document.getElementById(id);
-      console.log(element);
-      element.getElementByClassName("formerror")[0].innerHTML = error;
+      console.log(element + " " + id);
+      element.getElementsByClassName("formerror")[0].innerHTML = error;
     }
     function resetForm(){
       console.log("here");
@@ -121,7 +121,7 @@
       var regexCap = /[A-Z]/g;
       var regexLow = /[a-z]/g;
       var regexNum = /[0-9]/g;
-      var regexSpe = /[!@#\$%\^\&*\)\(+=._-)]/g;
+      var regexSpe = /[!@#\$%\^\&*\)\(+=._-]/g;
       
       
       if (name.length < 2 || regexNum.test(name)) {
@@ -140,7 +140,7 @@
     
       }
       if (dob.length < 8 || regexCap.test(dob) || regexLow.test(dob)) {
-        seterror("Dob", " Dob Should be number Only");
+        seterror("dob", " Dob Should be number Only");
         returnval = false;
     
       }
@@ -153,10 +153,10 @@
       }
       if ( password.length <  5 ||
 
-       regexCap.test(password)||
-       regexLow.test(password)||
-       regexNum.test(password)||
-       regexSpe.test(password)
+       !regexCap.test(password)||
+       !regexLow.test(password)||
+       !regexNum.test(password)||
+       !regexSpe.test(password)
       
       ){
         seterror(
@@ -170,4 +170,4 @@
       return returnval;
     }
   </script>
-</html>
+</html> 

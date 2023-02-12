@@ -6,6 +6,7 @@
         "fnname",
         "formerror",
         "fpass",
+        "resetform",
         "returnval",
         "seterror",
         "validationform"

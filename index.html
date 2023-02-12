@@ -78,45 +78,96 @@
     </form>
   </body>
   <script>
-    function seterror(id, error) {
+    const form = document.getElementById("myForm");
+    form.addEventListener("submit",validateForm);
+    const reset = document.getElementById("reset");
+    form.addEventListener("click",resetform);
+    function seterror(id,error) {
       element = document.getElementById(id);
-      element.getElementsByClassName("formerror")[0].innerHTML = error;
+      console.log(element);
+      element.getElementByClassName("formerror")[0].innerHTML = error;
     }
-    function validateForm() {
-      var returnval = true;
-      var name = document.forms["myForm"]["fname"].value;
-      if (name.length < 5) {
-        seterror("name", "length is too short");
-        returnval = false;}
+    function resetForm(){
+      console.log("here");
+      let errorFields = document.getElementsByClassName("formerror");
+      console.log(errorFields);
+      for(let i = 0; i<errorFields.length;i++){
+        let ele = errorFields[i];
+        ele.innerHTML= "";
+      }
+    }
+    function validateForm(e) {
+      e.preventDefault();
+      var returnval = false;
 
-        var lname = document.forms["myForm"]["flname"].value;
-      if (lname.length < 5){
-      seterror("fname", "length is too short") 
-       returnval = false;
-       
+      console.log(e);
+      var name = document.forms["myForm"]["fname"].value;
+      var lname = document.forms["myForm"]["flname"].value;
+      var nname = document.forms["myForm"]["fnname"].value;
+      var dob = document.forms["myForm"]["fdob"].value;
+      var password = document.forms["myForm"]["fpass"].value;
+      var mobile = document.forms["myForm"]["fmobile"].value;
+    
+
+      if (
+      name.trim() == ""||
+      lname.trim() == ""||
+      nname.trim() == ""||
+      dob.trim() == ""||
+      password.trim() == ""||
+      mobile.trim() == ""
+      )
+      return false;
+      
+      var regexCap = /[A-Z]/g;
+      var regexLow = /[a-z]/g;
+      var regexNum = /[0-9]/g;
+      var regexSpe = /[!@#\$%\^\&*\)\(+=._-)]/g;
+      
+      
+      if (name.length < 2 || regexNum.test(name)) {
+        seterror("name", "Name is not valid");
+        returnval = false;
     
       }
-      var nname = document.forms["myForm"]["fnname"].value;
-      if (nname.length < 5) {
+      if (lname.length < 2 || regexNum.test(lname)) {
+        seterror("lname", "length is too short");
+        returnval = false;
+    
+      }
+      if (nname.length < 2 || regexNum.test(nname)) {
         seterror("nname", "length is too short");
         returnval = false;
+    
       }
-     var dob = document.forms["myForm"]["fdob"].value;
-       if (dob.length < 5) {
-         seterror("dob", "DoB should be number Only");
-         returnval = false;
-       }
-      var mobile = document.forms["myForm"]["fmobile"].value;
-      if (mobile.length>= 10) {
-        seterror("mobile", "Mobile number Should be 10 Digit ");
+      if (dob.length < 8 || regexCap.test(dob) || regexLow.test(dob)) {
+        seterror("Dob", " Dob Should be number Only");
         returnval = false;
+    
       }
-      var password= document.forms["myForm"]["fpass"].value;
-      if (password.length < 5) {
-        seterror("password", " It is a combination of Uppercase & Lowercase Letters and numbers and some special characters and not more then 10 characters, ");
-        returnval = false;
-      }
+      console.log(Number(mobile));
 
+      if (mobile.length != 10 || !regexNum.test(mobile)) {
+        seterror("mobile", "Mobile number Should be 10 digit");
+        returnval = false;
+    
+      }
+      if ( password.length <  5 ||
+
+       regexCap.test(password)||
+       regexLow.test(password)||
+       regexNum.test(password)||
+       regexSpe.test(password)
+      
+      ){
+        seterror(
+          "password",
+          "It is a combination of Uppercase & Lowercase Letters and numbers and some special characters and not more then 10 characters,"
+
+        );
+        returnval = false;
+      }
+ 
       return returnval;
     }
   </script>

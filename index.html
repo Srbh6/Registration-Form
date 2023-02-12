@@ -68,7 +68,9 @@
           <input id="add-box" id="fadd" type="text" />
           <span class="formerror"> </span>
         </div>
-
+<div class="EmptyError">
+  
+</div>
         <div class="form-button">
           <button id="submit" type="submit">Submit</button>
           <button id="reset" type="reset">reset</button>
@@ -78,6 +80,7 @@
   </body>
   <script>
     const form = document.getElementById("myForm");
+    let Er = document.getElementsByClassName("EmptyError")[0];
     form.addEventListener("submit",validateForm);
     const reset = document.getElementById("reset");
     form.addEventListener("click",resetForm);
@@ -88,6 +91,7 @@
     }
     function resetForm(){
       console.log("here");
+      Er.innerHTML = " ";
       let errorFields = document.getElementsByClassName("formerror");
       console.log(errorFields);
       for(let i = 0; i<errorFields.length;i++){
@@ -116,7 +120,11 @@
       password.trim() == ""||
       mobile.trim() == ""
       )
-      return false;
+      { 
+        Er.innerHTML = "fill all the fields"
+        return false
+      };
+
       
       var regexCap = /[A-Z]/g;
       var regexLow = /[a-z]/g;
